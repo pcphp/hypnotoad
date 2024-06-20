@@ -30,12 +30,24 @@ class DCT_2D:
 
     From the scipy docuentation
     https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.dct.html
+<<<<<<< HEAD
     the DCT we are using is (the default, 'type II'):
     y[k] = 2* sum[n=0..N-1] x[n]*cos(pi*k*(2n+1)/(2*N)), 0 <= k < N,
     which we apply first to columns (axis=1) and then to rows (axis=0).
     The inverse transform is (DCT 'type III' divided by 2N):
     y[k] = 1/(2N) * ( x[0] + 2 * sum[n=0..N-1] x[n]*cos(pi*(k+0.5)*n/N) ), 0 <= k < N
          = 1/N * ( x[0]/2 + sum[n=0..N-1] x[n]*cos(pi*(k+0.5)*n/N) ), 0 <= k < N
+=======
+    the DCT we are using is (the default, 'type II')::
+
+        y[k] = 2* sum[n=0..N-1] x[n]*cos(pi*k*(2n+1)/(2*N)), 0 <= k < N,
+
+    which we apply first to columns (axis=1) and then to rows (axis=0).
+    The inverse transform is (DCT 'type III' divided by 2N)::
+
+       y[k] = 1/(2N) * ( x[0] + 2 * sum[n=0..N-1] x[n]*cos(pi*(k+0.5)*n/N) ), 0 <= k < N
+            = 1/N * ( x[0]/2 + sum[n=0..N-1] x[n]*cos(pi*(k+0.5)*n/N) ), 0 <= k < N
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     """
 
     def __init__(self, Rarray, Zarray, psiRZ):

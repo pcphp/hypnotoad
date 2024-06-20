@@ -141,7 +141,10 @@ class TORPEXMagneticField(Equilibrium):
     )
 
     def __init__(self, equilibOptions, meshOptions):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         # Set up options read from user input
         self.user_options = self.user_options_factory.create(meshOptions)
 
@@ -591,7 +594,11 @@ class TORPEXMagneticField(Equilibrium):
             )
 
         # lower PF
+<<<<<<< HEAD
         lower_psi_func = self.getPolynomialGridFunc(
+=======
+        lower_psi_func = self.getSmoothMonotonicGridFunc(
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
             self.user_options.nx_core,
             self.user_options.psi_pf_lower,
             self.psi_sep[0],
@@ -600,7 +607,11 @@ class TORPEXMagneticField(Equilibrium):
         lower_psi_vals = self.make1dGrid(self.user_options.nx_core, lower_psi_func)
 
         # upper PF
+<<<<<<< HEAD
         upper_psi_func = self.getPolynomialGridFunc(
+=======
+        upper_psi_func = self.getSmoothMonotonicGridFunc(
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
             self.user_options.nx_core,
             self.user_options.psi_pf_upper,
             self.psi_sep[0],
@@ -609,7 +620,11 @@ class TORPEXMagneticField(Equilibrium):
         upper_psi_vals = self.make1dGrid(self.user_options.nx_core, upper_psi_func)
 
         # inner SOL
+<<<<<<< HEAD
         inner_psi_func = self.getPolynomialGridFunc(
+=======
+        inner_psi_func = self.getSmoothMonotonicGridFunc(
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
             self.user_options.nx_sol,
             self.psi_sep[0],
             self.user_options.psi_sol_inner,
@@ -618,7 +633,11 @@ class TORPEXMagneticField(Equilibrium):
         inner_psi_vals = self.make1dGrid(self.user_options.nx_sol, inner_psi_func)
 
         # outer SOL
+<<<<<<< HEAD
         outer_psi_func = self.getPolynomialGridFunc(
+=======
+        outer_psi_func = self.getSmoothMonotonicGridFunc(
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
             self.user_options.nx_sol,
             self.psi_sep[0],
             self.user_options.psi_sol,

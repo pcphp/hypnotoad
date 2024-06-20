@@ -23,7 +23,10 @@ else:
 
 class MatplotlibWidget:
     def __init__(self, parent):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         self.figure = Figure()
         self.canvas = FigureCanvas(self.figure)
         self.canvas.setParent(parent)
@@ -45,7 +48,11 @@ class MatplotlibWidget:
         if keep_limits:
             # slightly hacky way to clear axes, but prevents axis limits being reset when
             # we redraw
+<<<<<<< HEAD
             for artist in self.axes.lines + self.axes.collections:
+=======
+            for artist in self.axes.lines + self.axes.collections + self.axes.patches:
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
                 artist.remove()
             self.axes.set_prop_cycle(None)
             return

@@ -772,6 +772,7 @@ class TestEquilibrium:
     @pytest.mark.parametrize(
         ["grad_lower", "lower", "upper"], [[0.2, 0.4, 2.0], [-0.2, 2.0, 0.4]]
     )
+<<<<<<< HEAD
     def test_getPolynomialGridFuncGradLowerDecreasing(
         self, eq, grad_lower, lower, upper
     ):
@@ -779,6 +780,15 @@ class TestEquilibrium:
         # the average spacing
         N = 10.0
         f = eq.getPolynomialGridFunc(N, lower, upper, grad_lower=grad_lower)
+=======
+    def test_getSmoothMonotonicGridFuncGradLowerDecreasing(
+        self, eq, grad_lower, lower, upper
+    ):
+        # Test getSmoothMonotonicGridFunc() with grad_lower set so that it needs to
+        # decrease the average spacing
+        N = 10.0
+        f = eq.getSmoothMonotonicGridFunc(N, lower, upper, grad_lower=grad_lower)
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         # f(0) = lower
         assert f(0.0) == tight_approx(lower)
         # f(N) = upper
@@ -794,6 +804,7 @@ class TestEquilibrium:
     @pytest.mark.parametrize(
         ["grad_lower", "lower", "upper"], [[0.02, 0.4, 2.0], [-0.02, 2.0, 0.4]]
     )
+<<<<<<< HEAD
     def test_getPolynomialGridFuncGradLowerIncreasing(
         self, eq, grad_lower, lower, upper
     ):
@@ -801,6 +812,15 @@ class TestEquilibrium:
         # the average spacing
         N = 10.0
         f = eq.getPolynomialGridFunc(N, lower, upper, grad_lower=grad_lower)
+=======
+    def test_getSmoothMonotonicGridFuncGradLowerIncreasing(
+        self, eq, grad_lower, lower, upper
+    ):
+        # Test getSmoothMonotonicGridFunc() with grad_lower set so that it needs to
+        # increase the average spacing
+        N = 10.0
+        f = eq.getSmoothMonotonicGridFunc(N, lower, upper, grad_lower=grad_lower)
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         # f(0) = lower
         assert f(0.0) == tight_approx(lower)
         # f(N) = upper
@@ -816,6 +836,7 @@ class TestEquilibrium:
     @pytest.mark.parametrize(
         ["grad_upper", "lower", "upper"], [[0.5, 0.4, 2.0], [-0.5, 2.0, 0.4]]
     )
+<<<<<<< HEAD
     def test_getPolynomialGridFuncGradUpperDecreasing(
         self, eq, grad_upper, lower, upper
     ):
@@ -823,6 +844,15 @@ class TestEquilibrium:
         # the average spacing
         N = 10.0
         f = eq.getPolynomialGridFunc(N, lower, upper, grad_upper=grad_upper)
+=======
+    def test_getSmoothMonotonicGridFuncGradUpperDecreasing(
+        self, eq, grad_upper, lower, upper
+    ):
+        # Test getSmoothMonotonicGridFunc() with grad_upper set so that it needs to
+        # decrease the average spacing
+        N = 10.0
+        f = eq.getSmoothMonotonicGridFunc(N, lower, upper, grad_upper=grad_upper)
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         # f(0) = lower
         assert f(0.0) == tight_approx(lower)
         # f(N) = upper
@@ -838,6 +868,7 @@ class TestEquilibrium:
     @pytest.mark.parametrize(
         ["grad_upper", "lower", "upper"], [[0.1, 0.4, 2.0], [-0.1, 2.0, 0.4]]
     )
+<<<<<<< HEAD
     def test_getPolynomialGridFuncGradUpperIncreasing(
         self, eq, grad_upper, lower, upper
     ):
@@ -845,6 +876,15 @@ class TestEquilibrium:
         # the average spacing
         N = 10.0
         f = eq.getPolynomialGridFunc(N, lower, upper, grad_upper=grad_upper)
+=======
+    def test_getSmoothMonotonicGridFuncGradUpperIncreasing(
+        self, eq, grad_upper, lower, upper
+    ):
+        # Test getSmoothMonotonicGridFunc() with grad_upper set so that it needs to
+        # increase the average spacing
+        N = 10.0
+        f = eq.getSmoothMonotonicGridFunc(N, lower, upper, grad_upper=grad_upper)
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         # f(0) = lower
         assert f(0.0) == tight_approx(lower)
         # f(N) = upper
@@ -861,6 +901,7 @@ class TestEquilibrium:
         ["grad_lower", "grad_upper", "lower", "upper"],
         [[0.4, 0.2, 0.4, 2.0], [-0.4, -0.2, 2.0, 0.4]],
     )
+<<<<<<< HEAD
     def test_getPolynomialGridFuncGradBothDecreasing(
         self, eq, grad_lower, grad_upper, lower, upper
     ):
@@ -868,6 +909,15 @@ class TestEquilibrium:
         # needs to decrease the average spacing
         N = 10.0
         f = eq.getPolynomialGridFunc(
+=======
+    def test_getSmoothMonotonicGridFuncGradBothDecreasing(
+        self, eq, grad_lower, grad_upper, lower, upper
+    ):
+        # Test getSmoothMonotonicGridFunc() with grad_lower and grad_upper set so that
+        # it needs to decrease the average spacing
+        N = 10.0
+        f = eq.getSmoothMonotonicGridFunc(
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
             N, lower, upper, grad_lower=grad_lower, grad_upper=grad_upper
         )
         # f(0) = lower
@@ -892,17 +942,28 @@ class TestEquilibrium:
         ["grad_lower", "grad_upper", "lower", "upper"],
         [[0.2, 0.1, 0.4, 2.0], [-0.2, -0.1, 2.0, 0.4]],
     )
+<<<<<<< HEAD
     def test_getPolynomialGridFuncGradBothIncreasing(
         self, eq, grad_lower, grad_upper, lower, upper
     ):
         # Test getPolynomialGridFunc() with grad_lower and grad_upper set so that it
+=======
+    def test_getSmoothMonotonicGridFuncGradBothIncreasing(
+        self, eq, grad_lower, grad_upper, lower, upper
+    ):
+        # Test getSmoothMonotonicGridFunc() with grad_lower and grad_upper set so that it
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         # needs to increase the average spacing
         grad_lower = 0.2
         grad_upper = 0.1
         lower = 0.4
         upper = 2.0
         N = 10.0
+<<<<<<< HEAD
         f = eq.getPolynomialGridFunc(
+=======
+        f = eq.getSmoothMonotonicGridFunc(
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
             N, lower, upper, grad_lower=grad_lower, grad_upper=grad_upper
         )
         # f(0) = lower

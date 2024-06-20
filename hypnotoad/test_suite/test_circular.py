@@ -353,7 +353,11 @@ class TestCircular:
             atol_bxcvy = 1.0e-8
             if orthogonal:
                 rtol_bxcvz = 1.0e-14
+<<<<<<< HEAD
                 atol_bxcvz = 1.0e-15
+=======
+                atol_bxcvz = 2.0e-15
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
             else:
                 # Inaccuracies in hy do no exactly cancel for non-orthogonal case, so
                 # need slightly looser tolerance

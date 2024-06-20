@@ -6,12 +6,28 @@ class MultiLocationArray(numpy.lib.mixins.NDArrayOperatorsMixin):
     """
     Container for arrays representing points at different cell locations
     Not all have to be filled.
+<<<<<<< HEAD
+=======
+
+    Note the ``lower_right_corners``, ``upper_right_corners``, and
+    ``upper_left_corners`` members are only intended to be used for the global arrays,
+    as within each region the ``corners`` member contains all the corners for every
+    cell. ``lower_right_corners``, ``upper_right_corners``, and ``upper_left_corners``
+    are therefore not set to zero in ``MultiLocationArray.zero()`` as they do not need
+    to be initialized.
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     """
 
     _centre_array = None
     _xlow_array = None
     _ylow_array = None
     _corners_array = None
+<<<<<<< HEAD
+=======
+    _lower_right_corners_array = None
+    _upper_right_corners_array = None
+    _upper_left_corners_array = None
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
     def __init__(self, nx, ny):
         self.nx = nx
@@ -67,6 +83,45 @@ class MultiLocationArray(numpy.lib.mixins.NDArrayOperatorsMixin):
             self._corners_array = numpy.zeros([self.nx + 1, self.ny + 1])
         self._corners_array[...] = value
 
+<<<<<<< HEAD
+=======
+    @property
+    def lower_right_corners(self):
+        if self._lower_right_corners_array is None:
+            self._lower_right_corners_array = numpy.zeros([self.nx + 1, self.ny + 1])
+        return self._lower_right_corners_array
+
+    @lower_right_corners.setter
+    def lower_right_corners(self, value):
+        if self._lower_right_corners_array is None:
+            self._lower_right_corners_array = numpy.zeros([self.nx + 1, self.ny + 1])
+        self._lower_right_corners_array[...] = value
+
+    @property
+    def upper_right_corners(self):
+        if self._upper_right_corners_array is None:
+            self._upper_right_corners_array = numpy.zeros([self.nx + 1, self.ny + 1])
+        return self._upper_right_corners_array
+
+    @upper_right_corners.setter
+    def upper_right_corners(self, value):
+        if self._upper_right_corners_array is None:
+            self._upper_right_corners_array = numpy.zeros([self.nx + 1, self.ny + 1])
+        self._upper_right_corners_array[...] = value
+
+    @property
+    def upper_left_corners(self):
+        if self._upper_left_corners_array is None:
+            self._upper_left_corners_array = numpy.zeros([self.nx + 1, self.ny + 1])
+        return self._upper_left_corners_array
+
+    @upper_left_corners.setter
+    def upper_left_corners(self, value):
+        if self._upper_left_corners_array is None:
+            self._upper_left_corners_array = numpy.zeros([self.nx + 1, self.ny + 1])
+        self._upper_left_corners_array[...] = value
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     def copy(self):
         new_multilocationarray = MultiLocationArray(self.nx, self.ny)
         if self.centre is not None:
@@ -219,6 +274,16 @@ class MultiLocationArray(numpy.lib.mixins.NDArrayOperatorsMixin):
 
     def zero(self):
         # Initialise all locations, set them to zero and return the result
+<<<<<<< HEAD
+=======
+        #
+        # Note the ``lower_right_corners``, ``upper_right_corners``, and
+        # ``upper_left_corners`` members are only intended to be used for the global
+        # arrays, as within each region the ``corners`` member contains all the corners
+        # for every cell. ``lower_right_corners``, ``upper_right_corners``, and
+        # ``upper_left_corners`` are therefore not set to zero here as they do not need
+        # to be initialized.
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         self.centre = 0.0
         self.xlow = 0.0
         self.ylow = 0.0

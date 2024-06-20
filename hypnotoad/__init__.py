@@ -17,7 +17,11 @@
 # You should have received a copy of the GNU General Public License along with
 # Hypnotoad 2.  If not, see <http://www.gnu.org/licenses/>.
 
+<<<<<<< HEAD
 from .cases import tokamak, torpex
+=======
+from .cases import circular, tokamak, torpex
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 from .core.equilibrium import Point2D, EquilibriumRegion, Equilibrium, SolutionError
 from .core.mesh import MeshRegion, Mesh, BoutMesh
 from .core.multilocationarray import MultiLocationArray
@@ -26,6 +30,10 @@ from .__version__ import get_versions
 __version__ = get_versions()["version"]
 
 __all__ = [
+<<<<<<< HEAD
+=======
+    "circular",
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     "tokamak",
     "torpex",
     "Point2D",

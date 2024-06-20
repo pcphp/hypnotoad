@@ -4,13 +4,36 @@
 # geometry, optionally using a set of inputs in a YAML file
 #
 # For example:
+<<<<<<< HEAD
 #  $ hypnotoad_circular settings.yml
+=======
+#  $ hypnotoad-circular settings.yml
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 #
 
 import gc
 import warnings
 
 
+<<<<<<< HEAD
+=======
+def get_arg_parser():
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser(
+        description="""
+        Create a grid file for a configuration with circular, concentric flux surfaces.
+        """
+    )
+    parser.add_argument("inputfile", nargs="?", default=None)
+    parser.add_argument("--pdb", action="store_true", default=False)
+    parser.add_argument("--plot-regions", action="store_true", default=False)
+    parser.add_argument("--plot-mesh", action="store_true", default=False)
+
+    return parser
+
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 def main(*, add_noise=None):
     """
     Read (optional) input file, and write a grid file
@@ -23,6 +46,7 @@ def main(*, add_noise=None):
         points before generating the grid.
     """
 
+<<<<<<< HEAD
     from argparse import ArgumentParser
 
     parser = ArgumentParser()
@@ -31,6 +55,9 @@ def main(*, add_noise=None):
     parser.add_argument("--plot-regions", action="store_true", default=False)
     parser.add_argument("--plot-mesh", action="store_true", default=False)
     args = parser.parse_args()
+=======
+    args = get_arg_parser().parse_args()
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
     if args.inputfile is not None:
         # Options yaml file

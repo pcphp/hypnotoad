@@ -4,7 +4,13 @@ import os
 from pathlib import Path
 import sys
 
+<<<<<<< HEAD
 from integrated_tests.utils import run_case
+=======
+# Put the integrated_tests directory into sys.path so we can import from it
+sys.path.append(str(Path(__file__).joinpath("..", "..", "..").resolve()))
+from integrated_tests.utils import run_case  # noqa: E402
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
 diagnose = False
 

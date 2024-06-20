@@ -1,8 +1,108 @@
+<<<<<<< HEAD
 What's new
 ==========
 
 0.4.4 (unreleased)
 ------------------
+=======
+Release history
+===============
+
+### Bug fixes
+
+
+### New features
+
+- Radial grid line construction can recover from failure and generate
+  a rough grid to help visual inspection when option
+  `follow_perpendicular_recover` is set to True (#175)
+- A `View` menu enables the grid plot to be customised, with cell edges, corners,
+  grid lines and other components (#176).
+- `penalty_mask` is calculated and written to the grid file, based on intersection
+  of the grid with the wall. This enables immersed boundary conditions.
+- Wall coordinates are written to output grid as `closed_wall_R` and `closed_wall_Z`
+  (#176)
+
+0.5.2 (13th March 2023)
+-------------------------
+
+### Bug fixes
+
+- Document that editable installs are recommended for developers in manual and
+  exception message (#167)\
+  By [John Omotani](https://github.com/johnomotani)
+
+### New features
+
+- Save R,Z locations for all four corners of each cell (#168)\
+  By [John Omotani](https://github.com/johnomotani)
+- `PsiContour.plot()` and `FineContour.plot()` can be called with an `ax`
+  argument, and passing `psi` is optional (#163)\
+  By [Ben Dudson](https://github.com/bendudson)
+
+0.5.1 (18th January 2023)
+-------------------------
+
+### New features
+
+- Command line utility to get flux surfaces from a geqdsk file and save them to
+  NetCDF (#156)\
+  By [John Omotani](https://github.com/johnomotani)
+
+0.5.0 (12th January 2023)
+-------------------------
+
+### Breaking changes
+
+- Renamed command line programs to make the style consistent. All now use '-'
+  as a separator, not '\_' (#142)\
+  By [John Omotani](https://github.com/johnomotani)
+- Change how initial spacing of points on separatrix for nonorthogonal grids is
+  calculated (this spacing is used to construct the underlying orthogonal
+  grid). Now use weights that are just
+  {`cos(0.5*pi*i/index_length)**2`,`sin(0.5*pi*i/index_length)**2`} rather than
+  trying to construct a function that will give the same spacings when called
+  with the 'orthogonal spacing' that came from the initial call passed in as
+  `sfunc_orthogonal`. This means that the underlying orthogonal grid does not
+  rely at all on `nonorthogonal_*` settings, so removes an issue where some
+  grids could only be constructed by generating first with one set of
+  `nonorthogonal_*` settings, then changing them and regridding. It also
+  removes the possibility of a "Weight too small. Suggest increasing poloidal
+  'range' settings" error, since the branch that produced that error no longer
+  exists. Does change the nonorthogonal grids that will be produced by
+  hypnotoad, although the integrated tests pass without updating the expected
+  results, so the changes should be small (less than 1e-9 for the integrated
+  test cases) (#138)\
+  By [John Omotani](https://github.com/johnomotani)
+
+### Bug fixes
+
+- Catch error when `psi_sol_inner` is set wrong. Add suggestions to 'gradient
+  at end should be positive' error message (#130)\
+  By [Ben Dudson](https://github.com/bendudson)
+- Fix `psi_axis` check when `reverse_current=True` (#131)\
+  By [John Omotani](https://github.com/johnomotani)
+- Errors when setting options could crash GUI. Can now change string options in
+  GUI. Reset to old value if invalid value is passed for some option. Type name
+  is actually shown in error message pop-up when incorrect type is passed
+  (#134)\
+  By [John Omotani](https://github.com/johnomotani)
+- Fix potential error in check of X-point `psi` vs. `psinorm_sol` (#143)\
+  By [John Omotani](https://github.com/johnomotani)
+
+### New features
+
+- Create a manual for hypnotoad (#145)\
+  By [John Omotani](https://github.com/johnomotani)
+- Convenience script for making a plot of an equilibrium from a geqdsk file (#139)\
+  By [John Omotani](https://github.com/johnomotani)
+- If an `int` (or other `Number`) literal is passed to a float-type option, it
+  is converted implicitly instead of causing an error. (#134)\
+  By [John Omotani](https://github.com/johnomotani)
+
+0.4.4 (26th October 2022)
+-------------------------
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
 ### Bug fixes
 
@@ -22,8 +122,13 @@ What's new
   `xbout` to plot the grid cells from the newly added corner positions (#118)\
   By [John Omotani](https://github.com/johnomotani)
 
+<<<<<<< HEAD
 0.4.3
 -----
+=======
+0.4.3 (25th December 2021)
+--------------------------
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
 ### Bug fixes
 

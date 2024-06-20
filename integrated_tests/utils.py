@@ -17,6 +17,14 @@ expected_different_vars = [
     "hypnotoad_inputs_yaml",
     "Python_version",
     "module_versions",
+<<<<<<< HEAD
+=======
+    # Variables that have been added. These entries can be removed if/when the
+    # expected output is re-generated.
+    "penalty_mask",
+    "closed_wall_R",
+    "closed_wall_Z",
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 ]
 
 

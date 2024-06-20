@@ -21,7 +21,10 @@ import sys
 
 
 def with_default(value, default):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     if value is not None:
         return value
 

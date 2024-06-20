@@ -1,7 +1,11 @@
 # Settings for a lower double null GEQDSK file
 #
 # Usage:
+<<<<<<< HEAD
 # $ hypnotoad_geqdsk file.geqdsk geqdsk_cdn.yaml
+=======
+# $ hypnotoad-geqdsk file.geqdsk geqdsk_cdn.yaml
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 # 
 # Note: Other available options will be printed when the regions are generated
 # Generate the poloidal flux input

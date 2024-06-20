@@ -279,10 +279,19 @@ class CircularEquilibrium(Equilibrium):
         """
         d2psi/dr2 as a function of r
 
+<<<<<<< HEAD
         d2psi/dr2 = d/dr(B0 r / (sqrt(1 - r**2 / R0**2) q))
                   = B0 / (sqrt(1 - r**2 / R0**2) q)
                     + B0 r**2 / (R0**2 (1 - r**2 / R0**2)**1.5 q)
                     - B0 r dq/dr / (sqrt(1 - r**2 / R0**2) q**2)
+=======
+        ::
+
+            d2psi/dr2 = d/dr(B0 r / (sqrt(1 - r**2 / R0**2) q))
+                      = B0 / (sqrt(1 - r**2 / R0**2) q)
+                        + B0 r**2 / (R0**2 (1 - r**2 / R0**2)**1.5 q)
+                        - B0 r dq/dr / (sqrt(1 - r**2 / R0**2) q**2)
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         """
         if not hasattr(self, "_d2psidr2_r"):
             R0 = self.user_options.R0
@@ -291,9 +300,13 @@ class CircularEquilibrium(Equilibrium):
             def func(x):
                 return (
                     B0 / (np.sqrt(1.0 - x**2 / R0**2) * self.q(x))
+<<<<<<< HEAD
                     + B0
                     * x**2
                     / (R0**2 * (1.0 - x**2 / R0**2) ** 1.5 * self.q(x))
+=======
+                    + B0 * x**2 / (R0**2 * (1.0 - x**2 / R0**2) ** 1.5 * self.q(x))
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
                     - B0
                     * x
                     * self.dqdr(x)
@@ -324,10 +337,14 @@ class CircularEquilibrium(Equilibrium):
 
                 def func(x):
                     return (
+<<<<<<< HEAD
                         B0
                         * R0**2
                         / coef_array[0]
                         * (1.0 - np.sqrt(1.0 - x**2 / R0**2))
+=======
+                        B0 * R0**2 / coef_array[0] * (1.0 - np.sqrt(1.0 - x**2 / R0**2))
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
                     )
 
                 self._psi_r = func
@@ -344,8 +361,12 @@ class CircularEquilibrium(Equilibrium):
                                 * (
                                     -1.0
                                     + np.sqrt(
+<<<<<<< HEAD
                                         (a1 * (-(x**2) + R0**2))
                                         / (a0 + a1 * R0**2)
+=======
+                                        (a1 * (-(x**2) + R0**2)) / (a0 + a1 * R0**2)
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
                                     )
                                 )
                             )
@@ -354,8 +375,12 @@ class CircularEquilibrium(Equilibrium):
                                 * (
                                     1.0
                                     + np.sqrt(
+<<<<<<< HEAD
                                         (a1 * (-(x**2) + R0**2))
                                         / (a0 + a1 * R0**2)
+=======
+                                        (a1 * (-(x**2) + R0**2)) / (a0 + a1 * R0**2)
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
                                     )
                                 )
                             )
@@ -413,7 +438,11 @@ class CircularEquilibrium(Equilibrium):
 
     def f_R(self, R, Z):
         """
+<<<<<<< HEAD
         R component of the vector Grad(psi)/|Grad(psi)|**2.
+=======
+        R component of the vector :math:`\\nabla\\psi/|\\nabla\\psi|^2`.
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         This is in the minor radius direction for concentric, circular flux surface
         geometry.
         """
@@ -423,7 +452,11 @@ class CircularEquilibrium(Equilibrium):
 
     def f_Z(self, R, Z):
         """
+<<<<<<< HEAD
         Z component of the vector Grad(psi)/|Grad(psi)|**2.
+=======
+        Z component of the vector :math:`\\nabla\\psi/|\\nabla\\psi|^2`.
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         This is in the minor radius direction for concentric, circular flux surface
         geometry.
         """

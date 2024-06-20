@@ -12,6 +12,20 @@ import gc
 import warnings
 
 
+<<<<<<< HEAD
+=======
+def get_arg_parser():
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser()
+    parser.add_argument("filename")
+    parser.add_argument("inputfile", nargs="?", default=None)
+    parser.add_argument("--pdb", action="store_true", default=False)
+
+    return parser
+
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 def main(*, add_noise=None):
     """
     Read a g-file and (optional) input file, and write a grid file
@@ -24,6 +38,7 @@ def main(*, add_noise=None):
         points before generating the grid.
     """
 
+<<<<<<< HEAD
     from argparse import ArgumentParser
 
     parser = ArgumentParser()
@@ -31,6 +46,9 @@ def main(*, add_noise=None):
     parser.add_argument("inputfile", nargs="?", default=None)
     parser.add_argument("--pdb", action="store_true", default=False)
     args = parser.parse_args()
+=======
+    args = get_arg_parser().parse_args()
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
     filename = args.filename
     if args.inputfile is not None:

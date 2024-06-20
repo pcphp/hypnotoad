@@ -20,7 +20,10 @@ along with FreeGS.  If not, see <http://www.gnu.org/licenses/>.
 
 """
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 from scipy import interpolate
 from numpy.linalg import inv
 from numpy import (
@@ -39,6 +42,7 @@ def find_critical(R, Z, psi, atol, maxits, discard_xpoints=False):
     """
     Find critical points
 
+<<<<<<< HEAD
     Inputs
     ------
 
@@ -47,6 +51,21 @@ def find_critical(R, Z, psi, atol, maxits, discard_xpoints=False):
     psi - psi(nr, nz) 2D array of psi values
     atol - tolerance for refining position of X-points
     maxits - maximum number of iterations for refinement of X-points
+=======
+    Parameters
+    ----------
+
+    R : np.ndarray
+        R(nr, nz) 2D array of major radii
+    Z : np.ndarray
+        Z(nr, nz) 2D array of heights
+    psi : np.ndarray
+        psi(nr, nz) 2D array of psi values
+    atol : float
+        tolerance for refining position of X-points
+    maxits : int
+        maximum number of iterations for refinement of X-points
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
     Returns
     -------
@@ -94,7 +113,10 @@ def find_critical(R, Z, psi, atol, maxits, discard_xpoints=False):
                 and (Bp2[i, j] < Bp2[i, j + 1])
                 and (Bp2[i, j] < Bp2[i, j - 1])
             ):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
                 # Found local minimum
 
                 R0 = R[i, j]
@@ -107,7 +129,10 @@ def find_critical(R, Z, psi, atol, maxits, discard_xpoints=False):
 
                 count = 0
                 while True:
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
                     Br = -f(R1, Z1, dy=1, grid=False) / R1
                     Bz = f(R1, Z1, dx=1, grid=False) / R1
 

@@ -15,7 +15,11 @@ jobs:
     timeout-minutes: 30
     strategy:
       matrix:
+<<<<<<< HEAD
         python-version: [3.7, 3.8, 3.9]
+=======
+        python-version: [3.8, 3.9, '3.10']
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
     steps:
     - uses: actions/checkout@v2
@@ -89,13 +93,23 @@ jobs:
         python-version: '3.x'
     - name: Install dependencies
       run: |
+<<<<<<< HEAD
         python -m pip install --upgrade pip
         pip install --upgrade setuptools wheel twine
+=======
+        python3 -m pip install --upgrade pip
+        python3 -m pip install --upgrade build twine
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     - name: Build and publish
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
         git fetch --tags --unshallow
+<<<<<<< HEAD
         python setup.py sdist bdist_wheel
         twine upload dist/*
+=======
+        python3 -m build
+        python3 -m twine upload dist/*
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2

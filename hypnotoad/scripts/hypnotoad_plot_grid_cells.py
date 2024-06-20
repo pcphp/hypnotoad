@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 
 
+<<<<<<< HEAD
 def main():
+=======
+def get_arg_parser():
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     from argparse import ArgumentParser
 
     parser = ArgumentParser(
@@ -53,7 +57,16 @@ def main():
         default=False,
         help="Skip showing the plot in a window?",
     )
+<<<<<<< HEAD
     args = parser.parse_args()
+=======
+
+    return parser
+
+
+def main():
+    args = get_arg_parser().parse_args()
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     gridfile = args.gridfile
     mxg = args.mxg
     branch_cuts = args.branch_cuts
@@ -223,3 +236,10 @@ def main():
 
     if not no_show:
         plt.show()
+<<<<<<< HEAD
+=======
+
+
+if __name__ == "__main__":
+    main()
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2

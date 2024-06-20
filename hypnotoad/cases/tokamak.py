@@ -21,6 +21,7 @@ from ..utils.utils import with_default
 
 class TokamakEquilibrium(Equilibrium):
     """
+<<<<<<< HEAD
     Represents an axisymmetric tokamak equilibrium
 
     Data members
@@ -34,6 +35,16 @@ class TokamakEquilibrium(Equilibrium):
     - wall: list of Point2D giving vertices of polygon representing the wall, in
             anti-clockwise order; assumed to be closed so last element and first are
             taken to be connected
+=======
+    Axisymmetric tokamak equilibrium
+
+    Implements :class:`Equilibrium <hypnotoad.core.equilibrium.Equilibrium>`.
+
+    Finds the central O-point of the equilibrium, and the X-points. Creates
+    :class:`EquilibriumRegion <hypnotoad.core.equilibrium.EquilibriumRegion>` objects
+    for the core (separate outer and inner for double null configurations) and divertor
+    legs.
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     """
 
     # Tokamak-specific options and default values
@@ -43,6 +54,14 @@ class TokamakEquilibrium(Equilibrium):
             doc="Reverse the sign of the poloidal field",
             value_type=bool,
         ),
+<<<<<<< HEAD
+=======
+        psi_divide_twopi=WithMeta(
+            False,
+            doc="Divide poloidal flux, and so poloidal field, by 2pi",
+            value_type=bool,
+        ),
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         extrapolate_profiles=WithMeta(
             False,
             doc=(
@@ -167,13 +186,23 @@ class TokamakEquilibrium(Equilibrium):
         ),
         ny_inner_sol=WithMeta(
             lambda options: options.ny_sol // 2,
+<<<<<<< HEAD
             doc="Number of poloidal points in the inner SOL upstream of the X-point(s)",
+=======
+            doc="Number of poloidal points in the inboard SOL upstream of the "
+            "X-point(s)",
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
             value_type=int,
             check_all=is_positive,
         ),
         ny_outer_sol=WithMeta(
             lambda options: options.ny_sol - options.ny_inner_sol,
+<<<<<<< HEAD
             doc="Number of poloidal points in the outer SOL upstream of the X-point(s)",
+=======
+            doc="Number of poloidal points in the outboard SOL upstream of the "
+            "X-point(s)",
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
             value_type=int,
             check_all=is_positive,
         ),
@@ -367,6 +396,19 @@ class TokamakEquilibrium(Equilibrium):
             psi2D *= -1.0
             psi1D *= -1.0
 
+<<<<<<< HEAD
+=======
+        if self.user_options.psi_divide_twopi:
+            warnings.warn("Dividing poloidal flux by 2pi")
+            twopi = 2 * np.pi
+            psi2D /= twopi
+            psi1D /= twopi
+            if psi_axis_gfile is not None:
+                psi_axis_gfile /= twopi
+            if psi_bdry_gfile is not None:
+                psi_bdry_gfile /= twopi
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         if self.user_options.reverse_Bt:
             warnings.warn("Reversing the sign of the toroidal field")
             fpol1D *= -1.0
@@ -452,9 +494,16 @@ class TokamakEquilibrium(Equilibrium):
             self.psi_axis = opoints[0][2]  # Psi on magnetic axis
             self.o_point = Point2D(opoints[0][0], opoints[0][1])
             self.psi_axis_gfile = psi_axis_gfile
+<<<<<<< HEAD
             if (
                 psi_axis_gfile is not None
                 and abs(self.psi_axis - psi_axis_gfile) > 1.0e-3
+=======
+            psi_reverse_sign = -1.0 if self.user_options.reverse_current else 1.0
+            if (
+                psi_axis_gfile is not None
+                and abs(self.psi_axis - psi_reverse_sign * psi_axis_gfile) > 1.0e-3
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
             ):
                 raise ValueError(
                     f"psi_axis from the gfile ({psi_axis_gfile}) is different from psi "
@@ -467,9 +516,16 @@ class TokamakEquilibrium(Equilibrium):
             self.psi_bdry = xpoints[0][2]  # Psi on primary X-point
             self.x_point = Point2D(xpoints[0][0], xpoints[0][1])
             self.psi_bdry_gfile = psi_bdry_gfile
+<<<<<<< HEAD
             if (
                 psi_bdry_gfile is not None
                 and abs(self.psi_bdry - psi_bdry_gfile) > 1.0e-3
+=======
+            psi_reverse_sign = -1.0 if self.user_options.reverse_current else 1.0
+            if (
+                psi_bdry_gfile is not None
+                and abs(self.psi_bdry - psi_reverse_sign * psi_bdry_gfile) > 1.0e-3
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
             ):
                 raise ValueError(
                     f"psi_bdry from the gfile ({psi_bdry_gfile}) is different from psi "
@@ -638,6 +694,20 @@ class TokamakEquilibrium(Equilibrium):
             leg_lines = leg_lines[::-1]
         return {"inner": leg_lines[0], "outer": leg_lines[1]}
 
+<<<<<<< HEAD
+=======
+    # psi values
+    def _psinorm_to_psi(self, psinorm):
+        if psinorm is None:
+            return None
+        return self.psi_axis + psinorm * (self.psi_sep[0] - self.psi_axis)
+
+    def _psi_to_psinorm(self, psi):
+        if psi is None:
+            return None
+        return (psi - self.psi_axis) / (self.psi_sep[0] - self.psi_axis)
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     def makeRegions(self):
         """Main region generation function. Regions are logically
         rectangular ranges in poloidal angle; segments are
@@ -649,6 +719,10 @@ class TokamakEquilibrium(Equilibrium):
         make_regions is set to False.
 
         The main steps in doing this are:
+<<<<<<< HEAD
+=======
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         1. Set defaults if not already set by user
         2. Identify whether single or double null
         3. Describe the leg and core regions, depending on the topology
@@ -660,6 +734,7 @@ class TokamakEquilibrium(Equilibrium):
            (self.createRegionObjects).
         7. Connect regions together
 
+<<<<<<< HEAD
         Inputs
         ------
 
@@ -671,11 +746,18 @@ class TokamakEquilibrium(Equilibrium):
 
         - self.user_options    Sets default values if not set by user
         - self.regions         OrderedDict of EquilibriumRegion objects
+=======
+        Modifies:
+
+        * self.user_options - Sets default values if not set by user
+        * self.regions - OrderedDict of EquilibriumRegion objects
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
         """
         if self.psi_axis is None:
             raise ValueError("psi_axis has not been set")
 
+<<<<<<< HEAD
         # psi values
         def psinorm_to_psi(psinorm):
             if psinorm is None:
@@ -704,6 +786,27 @@ class TokamakEquilibrium(Equilibrium):
         self.psi_pf_upper = with_default(
             self.user_options.psi_pf_upper,
             psinorm_to_psi(self.user_options.psinorm_pf_upper),
+=======
+        self.psi_core = with_default(
+            self.user_options.psi_core,
+            self._psinorm_to_psi(self.user_options.psinorm_core),
+        )
+        self.psi_sol = with_default(
+            self.user_options.psi_sol,
+            self._psinorm_to_psi(self.user_options.psinorm_sol),
+        )
+        self.psi_sol_inner = with_default(
+            self.user_options.psi_sol_inner,
+            self._psinorm_to_psi(self.user_options.psinorm_sol_inner),
+        )
+        self.psi_pf_lower = with_default(
+            self.user_options.psi_pf_lower,
+            self._psinorm_to_psi(self.user_options.psinorm_pf_lower),
+        )
+        self.psi_pf_upper = with_default(
+            self.user_options.psi_pf_upper,
+            self._psinorm_to_psi(self.user_options.psinorm_pf_upper),
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         )
 
         self.poloidal_spacing_delta_psi = with_default(
@@ -711,15 +814,45 @@ class TokamakEquilibrium(Equilibrium):
             np.abs((self.psi_core - self.psi_sol) / 20.0),
         )
 
+<<<<<<< HEAD
         # Filter out the X-points not in range.
         # Keep only those with normalised psi < psinorm_sol
+=======
+        # Separate R and Z arrays for wall location
+        Rws = [p.R for p in self.wall]
+        Zws = [p.Z for p in self.wall]
+        # Point (Rc, Zc) inside the wall. Could use e.g. magnetic axis
+        Rc = 0.5 * (min(Rws) + max(Rws))
+        Zc = 0.5 * (min(Zws) + max(Zws))
+
+        def inside_wall(point: Point2D):
+            # If outside wall then a line from the middle of the
+            # bounding wall to the point will intersect. Note: Complex
+            # walls may cross multiple times.
+            return not polygons.intersect([Rc, point.R], [Zc, point.Z], Rws, Zws)
+
+        # Filter out the X-points not in range.
+        # Keep only those with normalised psi < psinorm_sol
+        # and where X-points are inside the wall
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         self.psi_sep, self.x_points = zip(
             *(
                 (psi, xpoint)
                 for psi, xpoint in zip(self.psi_sep, self.x_points)
+<<<<<<< HEAD
                 if psi_to_psinorm(psi) < self.user_options.psinorm_sol
             )
         )
+=======
+                if (self._psi_to_psinorm(psi) < self._psi_to_psinorm(self.psi_sol))
+                and inside_wall(xpoint)
+            )
+        )
+        for psi in self.psi_sep:
+            print(
+                f"Found X-point at psi = {psi}, psi_norm = {self._psi_to_psinorm(psi)}"
+            )
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
         # Check that there are only one or two left
         if not (0 < len(self.x_points) <= 2):
@@ -1017,6 +1150,15 @@ class TokamakEquilibrium(Equilibrium):
             nx_pf_lower = self.user_options.nx_pf + nx_inter_sep
             nx_pf_upper = self.user_options.nx_pf
 
+<<<<<<< HEAD
+=======
+        if (self.psi_sol_inner - self.psi_sep[-1]) * dpsidi_sep < 0.0:
+            raise ValueError(
+                "psi_sol_inner out of range. Try increasing "
+                "psinorm_sol_inner/psi_sol_inner."
+            )
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         # Radial segments i.e. gridded ranges of poloidal flux
         # These are common to both connected and disconnected double null
         segments = {
@@ -1361,6 +1503,7 @@ class TokamakEquilibrium(Equilibrium):
         (core region), find a set of points between the X-points.
         The result is returned as a dict of regions (like leg regions)
 
+<<<<<<< HEAD
         Inputs
         ------
 
@@ -1375,6 +1518,24 @@ class TokamakEquilibrium(Equilibrium):
                         psi_at_end      Poloidal flux at the end of the line
 
         npoints   number of points in each core region
+=======
+        Parameters
+        ----------
+        core_regions : dict
+            A dictionary containing definitions of core regions.
+            Keys are:
+
+              * segments - A list of segment names
+              * ny - Number of poloidal (y) points
+              * kind - A string e.g. "wall.X"
+              * xpoints_at_start - A list of Point2D objects or None
+              * xpoints_at_end - A list of Point2D objects or None
+              * psi_at_start - Poloidal flux at the start of the line
+              * psi_at_end - Poloidal flux at the end of the line
+
+        npoints : int
+            number of points in each core region
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
         Returns
         -------
@@ -1461,6 +1622,7 @@ class TokamakEquilibrium(Equilibrium):
         """
         Grids radial segments
 
+<<<<<<< HEAD
         Input
         -----
 
@@ -1470,6 +1632,19 @@ class TokamakEquilibrium(Equilibrium):
                       psi_end     The poloidal flux at the end of the segment
                       grad_start [optional]  Cell spacing at the start
                       grad_end   [optional] Cell spacing at the end
+=======
+        Parameters
+        ----------
+
+        segments : dict
+            A dict of segments, each of which is a dictionary containing:
+
+              * nx - Number of points in psi (x)
+              * psi_start - The poloidal flux at the start of the segment
+              * psi_end - The poloidal flux at the end of the segment
+              * grad_start - [optional]  Cell spacing at the start
+              * grad_end - [optional] Cell spacing at the end
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
         The input is not modified
 
@@ -1482,7 +1657,11 @@ class TokamakEquilibrium(Equilibrium):
         for name, segment in segments.items():
             segment_with_psival = segment.copy()
 
+<<<<<<< HEAD
             psi_func = self.getPolynomialGridFunc(
+=======
+            psi_func = self.getSmoothMonotonicGridFunc(
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
                 segment["nx"],
                 segment["psi_start"],
                 segment["psi_end"],
@@ -1510,6 +1689,7 @@ class TokamakEquilibrium(Equilibrium):
         - 'outer_upper_divertor'
         - 'outer_lower_divertor'
 
+<<<<<<< HEAD
         Inputs
         ------
 
@@ -1517,6 +1697,19 @@ class TokamakEquilibrium(Equilibrium):
         segments      Dictionary of radial segment definitions
                         nx            Number of radial cells
                         psi_vals      1D array of psi values, length 2*nx+1
+=======
+        Parameters
+        ----------
+
+        all_regions : dict
+            Dictionary containing specification for each region
+        segments : dict
+            Dictionary of radial segment definitions
+            Keys are:
+
+              * nx - Number of radial cells
+              * psi_vals - 1D array of psi values, length 2*nx+1
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
         Returns
         -------
@@ -1657,6 +1850,7 @@ def read_geqdsk(
     Read geqdsk formatted data from a file object, returning
     a TokamakEquilibrium object
 
+<<<<<<< HEAD
     Inputs
     ------
     filehandle   A file handle to read
@@ -1667,6 +1861,22 @@ def read_geqdsk(
     -------
     reverse_current = bool  Changes the sign of poloidal flux psi
     extrapolate_profiles = bool   Extrapolate pressure using exponential
+=======
+    Parameters
+    ----------
+    filehandle : file handle
+        A file handle to read
+    settings : dict
+        dict passed to TokamakEquilibrium
+    nonorthogonal_settings : dict
+        dict passed to TokamakEquilibrium
+
+    Options used:
+
+    * ``reverse_current = bool`` - Changes the sign of poloidal flux psi
+    * ``extrapolate_profiles = bool`` - Extrapolate pressure using exponential
+    * ``psi_divide_twopi = bool`` - Divide poloidal flux, and so poloidal field, by 2pi
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     """
 
     if settings is None:

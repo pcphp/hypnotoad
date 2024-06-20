@@ -1,6 +1,7 @@
 import setuptools
 import versioneer
 
+<<<<<<< HEAD
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
@@ -48,4 +49,9 @@ setuptools.setup(
         ],
         "gui_scripts": ["hypnotoad-gui = hypnotoad.gui:main"],
     },
+=======
+setuptools.setup(
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 )

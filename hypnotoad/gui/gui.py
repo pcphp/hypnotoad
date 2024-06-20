@@ -52,10 +52,23 @@ DEFAULT_OPTIONS = {
 
 DEFAULT_GUI_OPTIONS = {
     "grid_file": "bout.grd.nc",
+<<<<<<< HEAD
+=======
+    "plot_flux": True,
+    "plot_wall": True,
+    "plot_centers": True,
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     "plot_xlow": True,
     "plot_ylow": True,
     "plot_corners": True,
     "save_full_yaml": False,
+<<<<<<< HEAD
+=======
+    "plot_legend": True,
+    "plot_gridlines": False,
+    "plot_celledges": False,
+    "plot_penalty": False,
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 }
 
 
@@ -118,12 +131,41 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
         set_triggered(self.action_About, self.help_about)
         set_triggered(self.action_Preferences, self.open_preferences)
 
+<<<<<<< HEAD
+=======
+        # View updates trigger a re-plotting
+        def trigger_replot():
+            """
+            Update settings and replot grid
+            """
+            self.updateGuiOptionsFromMenu()
+            # Re-plot, keeping plot limits
+            self.plot_grid(keep_limits=True)
+
+        set_triggered(self.action_Flux, trigger_replot)
+        set_triggered(self.action_Wall, trigger_replot)
+        set_triggered(self.action_Centers, trigger_replot)
+        set_triggered(self.action_Corners, trigger_replot)
+        set_triggered(self.action_Xlow, trigger_replot)
+        set_triggered(self.action_Ylow, trigger_replot)
+        set_triggered(self.action_Lines, trigger_replot)
+        set_triggered(self.action_Edges, trigger_replot)
+        set_triggered(self.action_Legend, trigger_replot)
+        set_triggered(self.action_Penalty, trigger_replot)
+        set_triggered(self.action_Clear, self.clearPlot)
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         self.action_Quit.triggered.connect(self.close)
 
         self.options = DEFAULT_OPTIONS
         self.gui_options = DEFAULT_GUI_OPTIONS
         self.filename = DEFAULT_OPTIONS_FILENAME
 
+<<<<<<< HEAD
+=======
+        self.updateMenuFromGuiOptions()
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         self.search_bar.setPlaceholderText("Search options...")
         self.search_bar.textChanged.connect(self.search_options_form)
         self.search_bar.setToolTip(self.search_options_form.__doc__.strip())
@@ -144,6 +186,56 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
         self.options_form.itemDoubleClicked.connect(_table_item_edit_display)
         self.update_options_form()
 
+<<<<<<< HEAD
+=======
+    def updateMenuFromGuiOptions(self):
+        """
+        Updates menu items from gui_options
+        """
+        self.action_Flux.setChecked(self.gui_options["plot_flux"])
+        self.action_Wall.setChecked(self.gui_options["plot_wall"])
+        self.action_Centers.setChecked(self.gui_options["plot_centers"])
+        self.action_Xlow.setChecked(self.gui_options["plot_xlow"])
+        self.action_Ylow.setChecked(self.gui_options["plot_ylow"])
+        self.action_Corners.setChecked(self.gui_options["plot_corners"])
+        self.action_Legend.setChecked(self.gui_options["plot_legend"])
+        self.action_Lines.setChecked(self.gui_options["plot_gridlines"])
+        self.action_Edges.setChecked(self.gui_options["plot_celledges"])
+        self.action_Penalty.setChecked(self.gui_options["plot_penalty"])
+
+    def updateGuiOptionsFromMenu(self):
+        """
+        Update gui_options settings from menu
+        """
+        self.gui_options["plot_flux"] = self.action_Flux.isChecked()
+        self.gui_options["plot_wall"] = self.action_Wall.isChecked()
+        self.gui_options["plot_centers"] = self.action_Centers.isChecked()
+        self.gui_options["plot_xlow"] = self.action_Xlow.isChecked()
+        self.gui_options["plot_ylow"] = self.action_Ylow.isChecked()
+        self.gui_options["plot_corners"] = self.action_Corners.isChecked()
+        self.gui_options["plot_legend"] = self.action_Legend.isChecked()
+        self.gui_options["plot_gridlines"] = self.action_Lines.isChecked()
+        self.gui_options["plot_celledges"] = self.action_Edges.isChecked()
+        self.gui_options["plot_penalty"] = self.action_Penalty.isChecked()
+
+    def clearPlot(self):
+        """
+        Clear the grid plot
+        """
+        self.gui_options["plot_flux"] = False
+        self.gui_options["plot_wall"] = False
+        self.gui_options["plot_centers"] = False
+        self.gui_options["plot_xlow"] = False
+        self.gui_options["plot_ylow"] = False
+        self.gui_options["plot_corners"] = False
+        self.gui_options["plot_legend"] = False
+        self.gui_options["plot_gridlines"] = False
+        self.gui_options["plot_celledges"] = False
+        self.gui_options["plot_penalty"] = False
+        self.updateMenuFromGuiOptions()
+        self.plot_grid(keep_limits=True)
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     def close(self):
         # Delete and garbage-collect hypnotoad objects here so that any ParallelMap
         # instances get deleted if they exists. ParallelMap.__del__() calls
@@ -274,12 +366,22 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
             tokamak.TokamakEquilibrium.nonorthogonal_options_factory.defaults
         )
 
+<<<<<<< HEAD
         # evaluate filtered_defaults using the values in self.options, so that any
         # expressions get evaluated
         filtered_default_values = dict(
             BoutMesh.user_options_factory.create(self.options)
         )
         try:
+=======
+        try:
+            # evaluate filtered_defaults using the values in self.options, so that any
+            # expressions get evaluated
+            filtered_default_values = dict(
+                BoutMesh.user_options_factory.create(self.options)
+            )
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
             filtered_default_values.update(
                 tokamak.TokamakEquilibrium.user_options_factory.create(self.options)
             )
@@ -297,7 +399,11 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
                 )
         except (ValueError, TypeError) as e:
             self._popup_error_message(e)
+<<<<<<< HEAD
             return
+=======
+            return False
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
         # Skip options handled specially elsewhere
         filtered_options.pop("orthogonal", None)
@@ -324,6 +430,11 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
         self.options_form.setSortingEnabled(True)
         self.options_form.cellChanged.connect(self.options_form_changed)
 
+<<<<<<< HEAD
+=======
+        return True
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     def options_form_changed(self, row, column):
         """Change the options form from the widget table"""
 
@@ -334,6 +445,12 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
             raise ValueError("Not allowed to change option names")
         else:
             key = self.options_form.item(row, 0).text()
+<<<<<<< HEAD
+=======
+            has_old_value = key in self.options
+            if has_old_value:
+                old_value = self.options[key]
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
             if item.text() == "":
                 # Reset to default
@@ -341,11 +458,28 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
                 # don't know how to get that
                 if key in self.options:
                     del self.options[key]
+<<<<<<< HEAD
                 return
 
             self.options[key] = ast.literal_eval(item.text())
 
         self.update_options_form()
+=======
+            else:
+                try:
+                    self.options[key] = ast.literal_eval(item.text())
+                except (ValueError, SyntaxError):
+                    # Value might have been string with some illegal character in
+                    self.options[key] = item.text()
+
+        if not self.update_options_form():
+            # Some error occured, reset the original value
+            if has_old_value:
+                self.options[key] = old_value
+            else:
+                del self.options[key]
+            self.update_options_form()
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
     def search_options_form(self, text):
         """Search for specific options"""
@@ -372,7 +506,11 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
         self.options_file_line_edit.setText(filename)
         self.filename = filename
         self.read_options()
+<<<<<<< HEAD
         self.nonorthogonal_box.setChecked(not self.options.get("orthogonal", True))
+=======
+        self.nonorthogonal_box.setChecked(not self.options["orthogonal"])
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
     def read_options(self):
         """Read the options file"""
@@ -385,7 +523,15 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
 
         if options_filename:
             with open(options_filename, "r") as f:
+<<<<<<< HEAD
                 self.options = yaml.safe_load(f)
+=======
+                file_options = yaml.safe_load(f)
+            # Ensure that all default options keys are in self.options
+            # Note: update mutates dict, returns None
+            self.options = DEFAULT_OPTIONS.copy()
+            self.options.update(file_options)
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
         possible_options = (
             [opt for opt in tokamak.TokamakEquilibrium.user_options_factory.defaults]
@@ -561,21 +707,62 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
 
         self.mesh.writeGridfile(filename)
 
+<<<<<<< HEAD
     def plot_grid(self, *, keep_limits=False):
         self.plot_widget.clear(keep_limits=keep_limits)
 
         if hasattr(self, "eq"):
             self.eq.plotPotential(ncontours=40, axis=self.plot_widget.axes)
             self.eq.plotWall(axis=self.plot_widget.axes)
+=======
+    def plot_grid(self, *, keep_limits: bool = False):
+        """
+        Re-plot the grid and equilibrium
+
+        # Arguments
+
+        keep_limits: bool
+            Keep the axis limits of the plot unchanged?
+        """
+
+        if keep_limits:
+            xlim = self.plot_widget.axes.get_xlim()
+            ylim = self.plot_widget.axes.get_ylim()
+
+        self.plot_widget.clear(keep_limits=keep_limits)
+
+        if hasattr(self, "eq"):
+            if self.gui_options["plot_flux"]:
+                self.eq.plotPotential(ncontours=40, axis=self.plot_widget.axes)
+            if self.gui_options["plot_wall"]:
+                self.eq.plotWall(axis=self.plot_widget.axes)
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
         if hasattr(self, "mesh"):
             # mesh exists, so plot the grid points
             self.mesh.plotPoints(
+<<<<<<< HEAD
+=======
+                centers=self.gui_options["plot_centers"],
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
                 xlow=self.gui_options["plot_xlow"],
                 ylow=self.gui_options["plot_ylow"],
                 corners=self.gui_options["plot_corners"],
                 ax=self.plot_widget.axes,
             )
+<<<<<<< HEAD
+=======
+
+            if self.gui_options["plot_gridlines"]:
+                self.mesh.plotGridLines(ax=self.plot_widget.axes)
+
+            if self.gui_options["plot_celledges"]:
+                self.mesh.plotGridCellEdges(ax=self.plot_widget.axes)
+
+            if self.gui_options["plot_penalty"]:
+                self.mesh.plotPenaltyMask(ax=self.plot_widget.axes)
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         elif hasattr(self, "eq"):
             # no mesh, but do have equilibrium, so plot separatrices
             for region in self.eq.regions.values():
@@ -586,6 +773,16 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
                 )
             self.plot_widget.axes.plot(*self.eq.x_points[0], "rx")
 
+<<<<<<< HEAD
+=======
+        if keep_limits:
+            self.plot_widget.axes.set_xlim(xlim)
+            self.plot_widget.axes.set_ylim(ylim)
+
+        if not self.gui_options["plot_legend"]:
+            self.plot_widget.axes.legend().set_visible(False)
+
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         self.plot_widget.canvas.draw()
 
     def _popup_error_message(self, error):
@@ -609,14 +806,25 @@ class Preferences(QDialog, Ui_Preferences):
         self.saveFullYamlCheckBox.setChecked(self.parent.gui_options["save_full_yaml"])
 
     def accept(self):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
         self.parent.gui_options["grid_file"] = self.defaultGridFileNameLineEdit.text()
         self.parent.gui_options["plot_xlow"] = self.plotXlowCheckBox.isChecked()
         self.parent.gui_options["plot_ylow"] = self.plotYlowCheckBox.isChecked()
         self.parent.gui_options["plot_corners"] = self.plotCornersCheckBox.isChecked()
+<<<<<<< HEAD
         self.parent.gui_options[
             "save_full_yaml"
         ] = self.saveFullYamlCheckBox.isChecked()
+=======
+        self.parent.gui_options["save_full_yaml"] = (
+            self.saveFullYamlCheckBox.isChecked()
+        )
+
+        self.parent.updateMenuFromGuiOptions()
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
 
         self.parent.plot_grid()
 

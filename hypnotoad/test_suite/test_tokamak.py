@@ -79,7 +79,10 @@ def test_tokamak_interpolations(psi_interpolation_method):
 
 @pytest.mark.parametrize("psi_interpolation_method", ["spline", "dct"])
 def test_read_geqdsk(psi_interpolation_method):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     settings = {"psi_interpolation_method": psi_interpolation_method}
 
     # Number of mesh points
@@ -210,7 +213,10 @@ def test_bounding():
 
 @pytest.mark.parametrize("psi_interpolation_method", ["spline", "dct"])
 def test_xpoint(psi_interpolation_method):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     settings = {"psi_interpolation_method": psi_interpolation_method}
 
     nx = 65
@@ -521,7 +527,10 @@ def make_upper_double_null_largesep(settings=None):
 
 @pytest.mark.parametrize("psi_interpolation_method", ["spline", "dct"])
 def test_findlegs(psi_interpolation_method):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     settings = {"psi_interpolation_method": psi_interpolation_method}
 
     eq = make_lower_single_null(settings)
@@ -540,7 +549,10 @@ def test_findlegs(psi_interpolation_method):
 
 @pytest.mark.parametrize("psi_interpolation_method", ["spline", "dct"])
 def test_findlegs_upper(psi_interpolation_method):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     settings = {"psi_interpolation_method": psi_interpolation_method}
 
     eq = make_upper_single_null(settings)
@@ -559,7 +571,10 @@ def test_findlegs_upper(psi_interpolation_method):
 
 @pytest.mark.parametrize("psi_interpolation_method", ["spline", "dct"])
 def test_makeregions_lsn(psi_interpolation_method):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     settings = {"psi_interpolation_method": psi_interpolation_method}
 
     eq = make_lower_single_null(settings)
@@ -570,7 +585,10 @@ def test_makeregions_lsn(psi_interpolation_method):
 
 @pytest.mark.parametrize("psi_interpolation_method", ["spline", "dct"])
 def test_makeregions_usn(psi_interpolation_method):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     settings = {"psi_interpolation_method": psi_interpolation_method}
 
     eq = make_upper_single_null(settings)
@@ -581,7 +599,10 @@ def test_makeregions_usn(psi_interpolation_method):
 
 @pytest.mark.parametrize("psi_interpolation_method", ["spline", "dct"])
 def test_makeregions_cdn(psi_interpolation_method):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     settings = {"psi_interpolation_method": psi_interpolation_method}
 
     eq = make_connected_double_null(settings)
@@ -592,7 +613,10 @@ def test_makeregions_cdn(psi_interpolation_method):
 
 @pytest.mark.parametrize("psi_interpolation_method", ["spline", "dct"])
 def test_makeregions_udn(psi_interpolation_method):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     settings = {"psi_interpolation_method": psi_interpolation_method}
 
     eq = make_upper_double_null(settings)
@@ -603,7 +627,10 @@ def test_makeregions_udn(psi_interpolation_method):
 
 @pytest.mark.parametrize("psi_interpolation_method", ["spline", "dct"])
 def test_makeregions_ldn(psi_interpolation_method):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     settings = {"psi_interpolation_method": psi_interpolation_method}
 
     eq = make_lower_double_null(settings)
@@ -614,7 +641,10 @@ def test_makeregions_ldn(psi_interpolation_method):
 
 @pytest.mark.parametrize("psi_interpolation_method", ["spline", "dct"])
 def test_makeregions_udn_largesep_1(psi_interpolation_method):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     settings = {"psi_interpolation_method": psi_interpolation_method}
 
     eq = make_upper_double_null_largesep(settings)
@@ -624,7 +654,10 @@ def test_makeregions_udn_largesep_1(psi_interpolation_method):
 
 @pytest.mark.parametrize("psi_interpolation_method", ["spline", "dct"])
 def test_makeregions_udn_largesep_2(psi_interpolation_method):
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8e6be6086b9c27aa1e1011713e10d829e5dc6d2
     settings = {
         "psinorm_sol": 1.2,
         "psi_interpolation_method": psi_interpolation_method,
