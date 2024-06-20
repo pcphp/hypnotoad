@@ -1,0 +1,2 @@
+include versioneer.py
+include hypnotoad/__version__.py
