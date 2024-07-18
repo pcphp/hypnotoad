@@ -20,6 +20,7 @@ def get_arg_parser():
     parser = ArgumentParser()
     parser.add_argument("filename")
     parser.add_argument("inputfile", nargs="?", default=None)
+    parser.add_argument("outputfile",nargs="?", default=None)
     parser.add_argument("--pdb", action="store_true", default=False)
 
     return parser

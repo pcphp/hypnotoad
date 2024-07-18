@@ -1114,6 +1114,9 @@ class PsiContour:
             value_type=[float, int],
             check_all=is_positive,
         ),
+
+    #    grid_file=WithMeta("bout.grd.nc", value_type=str),
+
         refine_atol=WithMeta(
             2.0e-8,
             doc="Absolute tolerance for refinement of points",
@@ -2105,6 +2108,7 @@ class EquilibriumRegion(PsiContour):
     user_options_factory = OptionsFactory(
         # Include settings for member PsiContour objects
         PsiContour.user_options_factory,
+        grid_file=WithMeta("bout.grd.nc", value_type=str)
         #
         # General options for the grid
         ##############################

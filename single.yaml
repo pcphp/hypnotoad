@@ -1,0 +1,28 @@
+psinorm_core: 0.9
+psinorm_sol: 1.05
+psinorm_pf: 0.9
+
+# Number of points in poloidal regions
+
+ny_inner_lower_divertor: 8
+ny_inner_sol: 24
+ny_outer_sol: 24
+ny_outer_lower_divertor: 8
+
+
+# Number of points in radial segments
+
+nx_core: 34
+nx_sol: 34
+
+# Radial grid spacing
+
+psi_spacing_separatrix_multiplier: 1   # Smaller -> pack near separatrix
+
+# Poloidal grid spacing
+
+target_poloidal_spacing_length: 0.05   # Smaller -> pack near targets
+xpoint_poloidal_spacing_length: 0.05   # Smaller -> pack near X-points
+
+
+

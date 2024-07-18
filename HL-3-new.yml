@@ -1,0 +1,9 @@
+nx_core: 34
+nx_sol: 34
+ny_inner_divertor: 8
+ny_inner_sol: 24
+ny_inner_upper_divertor: 8
+ny_outer_divertor: 8
+ny_sol: 48
+orthogonal: true
+y_boundary_guards: 2

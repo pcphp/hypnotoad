@@ -5,29 +5,29 @@
 # Ranges of normalised poloidal flux
 
 psinorm_core: 0.8
-psinorm_sol: 1.01
-psinorm_pf: 0.9
+psinorm_sol: 1.05
+psinorm_pf: 0.8
 
 # Number of points in poloidal regions
 
 ny_inner_divertor: 4
-ny_sol: 8
+ny_sol: 56
 ny_outer_divertor: 4
 
 # Number of points in radial segments
 
-nx_core: 32
-nx_sol: 32
+nx_core: 34
+nx_sol: 34
 
 # Radial grid spacing
 
-y_boundary_guards: 1
+y_boundary_guards: 2
 
-psi_spacing_separatrix_multiplier: 0.5   # Smaller -> pack near separatrix
+psi_spacing_separatrix_multiplier: 0.9   # Smaller -> pack near separatrix
 
 # Poloidal grid spacing
 
-target_all_poloidal_spacing_length: 0.05   # Smaller -> pack near targets
-xpoint_poloidal_spacing_length: 0.05   # Smaller -> pack near X-points
+target_all_poloidal_spacing_length: 0.09   # Smaller -> pack near targets
+xpoint_poloidal_spacing_length: 0.09   # Smaller -> pack near X-points
 
 

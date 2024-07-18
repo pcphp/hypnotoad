@@ -33,10 +33,10 @@ nonorthogonal_xpoint_poloidal_spacing_range: 0.02
 nonorthogonal_xpoint_poloidal_spacing_range_inner: 0.1
 nonorthogonal_xpoint_poloidal_spacing_range_outer: 0.1
 number_of_processors: 1
-nx_core: 34
+nx_core: 66
 nx_inter_sep: 0
-nx_pf: 34
-nx_sol: 34
+nx_pf: 66
+nx_sol: 66
 nx_sol_inner: 5
 nx_sol_outer: 5
 ny_inner_divertor: 8
