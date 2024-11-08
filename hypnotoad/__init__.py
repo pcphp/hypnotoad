@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU General Public License along with
 # Hypnotoad 2.  If not, see <http://www.gnu.org/licenses/>.
 
-from .cases import circular, tokamak, torpex
+from .cases import circular, tokamak, torpex, fixbound
 from .core.equilibrium import Point2D, EquilibriumRegion, Equilibrium, SolutionError
 from .core.mesh import MeshRegion, Mesh, BoutMesh
 from .core.multilocationarray import MultiLocationArray
