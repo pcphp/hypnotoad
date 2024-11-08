@@ -86,6 +86,9 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
         super().__init__(None)
         self.setupUi(self)
 
+        # Used in file dialogs
+        self._current_dir = "."
+
         try:
             self.menu_File.setToolTipsVisible(True)
             self.menu_Mesh.setToolTipsVisible(True)
@@ -494,7 +497,7 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
         """Choose a Hypnotoad options file to load"""
 
         filename, _ = QFileDialog.getOpenFileName(
-            self, "Open options file", ".", filter=YAML_FILTER
+            self, "Open options file", self._current_dir, filter=YAML_FILTER
         )
 
         if (filename is None) or (filename == ""):
@@ -502,6 +505,9 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
         if not os.path.exists(filename):
             self.write("Could not find " + filename)
             return
+
+        # Record the directory so user doesn't have to navigate again
+        self._current_dir = os.path.dirname(filename)
 
         self.options_file_line_edit.setText(filename)
         self.filename = filename
@@ -556,7 +562,9 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
     def select_geqdsk_file(self):
         """Choose a "geqdsk" equilibrium file to open"""
 
-        filename, _ = QFileDialog.getOpenFileName(self, "Open geqdsk file", ".")
+        filename, _ = QFileDialog.getOpenFileName(
+            self, "Open geqdsk file", self._current_dir
+        )
 
         if (filename is None) or (filename == ""):
             return  # Cancelled
@@ -566,6 +574,9 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
                 f"QLineEdit {{ background-color: {COLOURS['red']} }}"
             )
             return
+
+        # Record the directory so user doesn't have to navigate again
+        self._current_dir = os.path.dirname(filename)
 
         self.geqdsk_file_line_edit.setText(filename)
         self.geqdsk_file_line_edit.setStyleSheet("")
@@ -594,9 +605,17 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
                     settings=copy.deepcopy(self.options),
                     nonorthogonal_settings=copy.deepcopy(self.options),
                 )
+            try:
+                # If there was an error in tokamak.read_geqdsk(), it may return both
+                # the TokamakEquilibrium and an error, otherwise it would return
+                # just a TokamakEquilibrium.
+                self.eq, e = self.eq
+                self._popup_error_message(e)
+            except TypeError:
+                # No error, so self.eq is already the TokamakEquilibrium object.
+                pass
         except (ValueError, RuntimeError, func_timeout.FunctionTimedOut) as e:
             self._popup_error_message(e)
-            return
 
         self.update_options_form()
 
@@ -693,7 +712,7 @@ class HypnotoadGui(QMainWindow, Ui_Hypnotoad):
         filename, _ = QFileDialog.getSaveFileName(
             self,
             "Save grid to file",
-            self.gui_options["grid_file"],
+            os.path.join(self._current_dir, self.gui_options["grid_file"]),
             filter=NETCDF_FILTER,
         )
 
