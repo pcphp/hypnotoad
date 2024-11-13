@@ -4,8 +4,8 @@
 
 # Ranges of normalised poloidal flux
 
-psinorm_core: 0.9
-psinorm_sol: 1.2
+psinorm_core: 0.8
+psinorm_sol: 0.9
 
 
 # Number of points in poloidal regions

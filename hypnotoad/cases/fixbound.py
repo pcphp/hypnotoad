@@ -51,12 +51,12 @@ class FixedBdEquilibrium(Equilibrium):
         ),
     
         psinorm_core=WithMeta(
-            0.9,
+            0.7,
             doc="Normalised psi of the inner radial (core) boundary",
             value_type=[float, int],
         ),
         psinorm_sol=WithMeta(
-            1.1,
+            0.95,
             doc="Normalised psi of the outer radial (SOL) boundary",
             value_type=[float, int],
         ),

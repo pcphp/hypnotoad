@@ -1,13 +1,12 @@
 # Generate grids for tokamak configurations without Xpoints or limiter configures
 #
 import sys
-sys.path.append('/home/pcphp/coding_work/hypnotoad/')
+sys.path.append('/home/pcphp/coding_work/hypnotoad/hypnotoad')
 import yaml
 from hypnotoad import tokamak, fixbound
 from hypnotoad.core.mesh import BoutMesh
-from hypnotoad.geqdsk._geqdsk import read as geq_read
 
-with open("/home/pcphp/coding_work/gfile/gfile.eqdsk",'r') as gf:
+with open("/home/pcphp/coding_work/gfile/gfile_fbgspy.eqdsk",'r') as gf:
     eq=fixbound.read_geqdsk(gf)
     # data = geq_read(gf)
 

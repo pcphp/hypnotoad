@@ -28,6 +28,7 @@ __version__ = get_versions()["version"]
 __all__ = [
     "circular",
     "tokamak",
+    "fixbound",
     "torpex",
     "Point2D",
     "EquilibriumRegion",
